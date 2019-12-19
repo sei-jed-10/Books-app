@@ -1,0 +1,32 @@
+<h1>All the Authors</h1>
+<%= link_to "Add an Author", authors_new_path, { :class => "button waves-effect waves-light btn" } %>
+<br><br>
+
+<table class="striped bordered">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Birth date</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @authors.each do |author| %>
+      <tr>
+        <td><%= link_to author.first_name, author_path(author) %></td>
+        <td><%= link_to author.last_name, author_path(author) %></td>
+
+        <td><%= author.birthdate %></td>
+        <td><a class="btn-floating btn-large red" href="<%= edit_author_path(author) %>" >
+      				<i class="large material-icons">mode_edit</i>
+    			</a>
+    	  </td>
+       <td><a class="btn-floating btn-large red" data-confirm="Are you sure you want to delete <%= author.first_name %>?" data-method="delete" href="/authors/<%= author.id %>" rel="nofollow"><i class="large material-icons">Delete Author</i>
+    	   </a>
+        </td>
+	      
+	                 
+
+      </tr>
+  <% end %>
+</table>
